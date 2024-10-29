@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:furevr/theme/app_theme.dart';
 import 'package:furevr/theme/theme_provider.dart';
 import 'package:furevr/utils/global.dart';
-import 'package:furevr/view/initial_view.dart';
+import 'package:furevr/view/auth/login_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,11 +24,12 @@ class _FurevrState extends State<Furevr> {
       child: Consumer<ThemeProvider>(
         builder: (context, themeProvider, child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: Global.appName,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeProvider.themeMode,
-            home: const InitialView(),
+            home: const LoginView(),
           );
         },
       ),

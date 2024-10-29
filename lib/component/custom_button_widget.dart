@@ -83,7 +83,7 @@ class _AppButtonState extends State<AppButton> {
               height: 23,
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  widget.options.textStyle!.color ?? Colors.white,
+                  widget.options.textStyle?.color ?? Colors.white,
                 ),
               ),
             ),
@@ -124,7 +124,7 @@ class _AppButtonState extends State<AppButton> {
           if (states.contains(MaterialState.disabled)) {
             return widget.options.disabledTextColor;
           }
-          return widget.options.textStyle!.color;
+          return widget.options.textStyle?.color;
         },
       ),
       backgroundColor: MaterialStateProperty.resolveWith<Color?>(
@@ -159,7 +159,7 @@ class _AppButtonState extends State<AppButton> {
                   widget.iconData,
                   size: widget.options.iconSize,
                   color: widget.options.iconColor ??
-                      widget.options.textStyle!.color,
+                      widget.options.textStyle?.color,
                 ),
           ),
           label: textWidget,

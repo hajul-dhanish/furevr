@@ -18,10 +18,10 @@ class AppTheme {
 
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: ColorPalette.primaryColor,
+    primaryColor: ColorPalette.primary,
     colorScheme: const ColorScheme.light().copyWith(
-      primary: ColorPalette.primaryColor,
-      secondary: ColorPalette.secondaryColor,
+      primary: ColorPalette.primary,
+      secondary: ColorPalette.secondary,
       background: ColorPalette.lightBackgroundColor,
       onBackground: ColorPalette.lightTextColor,
     ),
@@ -33,10 +33,10 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: ColorPalette.primaryColor,
+    primaryColor: ColorPalette.primary,
     colorScheme: const ColorScheme.dark().copyWith(
-      primary: ColorPalette.primaryColor,
-      secondary: ColorPalette.secondaryColor,
+      primary: ColorPalette.primary,
+      secondary: ColorPalette.secondary,
       background: ColorPalette.darkBackgroundColor,
       onBackground: ColorPalette.darkTextColor,
     ),
@@ -48,18 +48,18 @@ class AppTheme {
 }
 
 extension CustomTextStyles on TextTheme {
-  TextStyle get bodyBold =>
+  static TextStyle get bodyBold =>
       GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.bold);
-  TextStyle get bodyDefault =>
+  static TextStyle get bodyDefault =>
       GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.normal);
-  TextStyle get headingBold =>
+  static TextStyle get headingBold =>
       GoogleFonts.lato(fontSize: 24, fontWeight: FontWeight.bold);
-  TextStyle get headingNormal =>
+  static TextStyle get headingNormal =>
       GoogleFonts.lato(fontSize: 24, fontWeight: FontWeight.normal);
-  TextStyle get captionBold =>
+  static TextStyle get captionBold =>
       GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.bold);
-  TextStyle get captionNormal =>
+  static TextStyle get captionNormal =>
       GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.normal);
-  TextStyle get bodyThin =>
+  static TextStyle get bodyThin =>
       GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w300);
 }
