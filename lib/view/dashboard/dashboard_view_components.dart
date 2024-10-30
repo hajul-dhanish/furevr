@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DashboardWidgetComponents {
-  static Widget dashboardTopTileWidget() {
+  static Widget dashboardTopTileWidget(String username) {
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Row(
@@ -49,9 +49,9 @@ class DashboardWidgetComponents {
                 width: 25,
                 height: 25,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 4.0),
-                child: Text("Micky"),
+              Padding(
+                padding: const EdgeInsets.only(left: 4.0),
+                child: Text(username),
               ),
               const Icon(Icons.arrow_drop_down),
             ],
@@ -60,5 +60,4 @@ class DashboardWidgetComponents {
       ),
     );
   }
-
 }

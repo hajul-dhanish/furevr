@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppState extends ChangeNotifier {
-  bool isNewUser = false;
-  bool isLoggedin = false;
-  String? userName;
+  static bool isNewUser = false;
+  static bool isLoggedin = false;
+  static String? userName;
   void clearAppState() {
     isLoggedin = false;
     userName = null;

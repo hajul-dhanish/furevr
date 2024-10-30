@@ -3,10 +3,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:furevr/component/category_items.dart';
 import 'package:furevr/component/pet_item.dart';
 import 'package:furevr/component/title_text.dart';
+import 'package:furevr/data/local/SharedPref.dart';
+import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/data/remote/demo_db.dart';
 import 'package:furevr/routes/nav.dart';
 import 'package:furevr/theme/app_theme.dart';
-import 'package:furevr/view/auth/login_view.dart';
 import 'package:furevr/view/dashboard/dashboard_view_components.dart';
 import 'package:furevr/widget/droplet_corossal_widget.dart';
 import 'package:furevr/widget/grooming_card_widget.dart';
@@ -21,6 +22,11 @@ class DashboardView extends StatefulWidget {
 
 class _DashboardViewState extends State<DashboardView> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
@@ -29,7 +35,7 @@ class _DashboardViewState extends State<DashboardView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DashboardWidgetComponents.dashboardTopTileWidget(),
+              DashboardWidgetComponents.dashboardTopTileWidget(""),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),

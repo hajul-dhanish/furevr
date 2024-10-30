@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:furevr/firebase_options.dart';
 import 'package:furevr/localization/app_localization.dart';
 import 'package:furevr/routes/router.dart';
 import 'package:furevr/theme/app_theme.dart';
@@ -8,6 +10,7 @@ import 'package:furevr/utils/global.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppLocalizations.initialize(const Locale('en'));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const Furevr());
 }
 

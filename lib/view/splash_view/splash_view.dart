@@ -18,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 950));
       if (mounted) {
-        if (AppState().isLoggedin) {
+        if (AppState.isLoggedin) {
           context.go(Navigation.homeView);
         } else {
           context.go(Navigation.loginView);
