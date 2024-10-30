@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:furevr/component/category_items.dart';
-import 'package:furevr/component/notification_box.dart';
 import 'package:furevr/component/pet_item.dart';
-import 'package:furevr/component/service_card_widget.dart';
 import 'package:furevr/component/title_text.dart';
 import 'package:furevr/data/remote/demo_db.dart';
+import 'package:furevr/routes/nav.dart';
+import 'package:furevr/theme/app_theme.dart';
+import 'package:furevr/view/auth/login_view.dart';
+import 'package:furevr/view/dashboard/dashboard_view_components.dart';
+import 'package:furevr/widget/droplet_corossal_widget.dart';
+import 'package:furevr/widget/grooming_card_widget.dart';
+import 'package:go_router/go_router.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -25,64 +29,13 @@ class _DashboardViewState extends State<DashboardView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              DashboardWidgetComponents.dashboardTopTileWidget(),
+              const SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 6.0),
-                      child: Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.place_outlined,
-                                  size: 20,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "KPS Towers, Chennai",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    Icon(Icons.arrow_drop_down),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    // NotificationBox(
-                    //   notifiedNumber: 4,
-                    //   onTap: null,
-                    // )
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          "assets/icons/pet-border.svg",
-                          width: 25,
-                          height: 25,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 4.0),
-                          child: Text("Micky"),
-                        ),
-                        const Icon(Icons.arrow_drop_down),
-                      ],
-                    ),
-                  ],
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  "Ayo, Pookie! 🎀 Ready to crush it? Your Brownie Points are waiting!",
+                  style: CustomTextStyles.headingNormal,
                 ),
               ),
               const SizedBox(height: 10),
@@ -93,18 +46,24 @@ class _DashboardViewState extends State<DashboardView> {
               titleText(
                 "Style your Tifl like a pro",
                 showViewAll: true,
+                callback: () => context.push(Navigation.groomingView),
               ),
               const SizedBox(height: 15),
               _groomingCards(),
-              //
+              const SizedBox(height: 15),
+              titleText(
+                "Find the Perfect Outdoor for Your Tifl",
+                showViewAll: true,
+              ),
+              const SizedBox(height: 15),
+              const DropletCorossolCardWidget(),
               const SizedBox(height: 15),
               titleText(
                 "Adopt New Tifls",
                 showViewAll: true,
               ),
               const SizedBox(height: 15),
-              _buildCards(),
-              //
+              _atoptionCard(),
               const SizedBox(height: 65),
             ],
           ),
@@ -117,19 +76,14 @@ class _DashboardViewState extends State<DashboardView> {
 
   _buildSearch() => Container(
         margin: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-            color: Colors.grey[300], borderRadius: BorderRadius.circular(14)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(14)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),
           child: TextFormField(
-            onChanged: (value) {
-              setState(() {
-                // searchQuery = value;
-              });
-            },
+            onChanged: (value) {},
             decoration: const InputDecoration(
               isDense: true,
-              hintText: "Search Your Pets",
+              hintText: "Split it here nigga",
               prefixIcon: Icon(Icons.search),
               enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
               focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -146,7 +100,6 @@ class _DashboardViewState extends State<DashboardView> {
       "assets/ads/ad4.jpg",
       "assets/ads/ad5.jpg",
     ];
-    double width = MediaQuery.of(context).size.width * .8;
 
     return SizedBox(
       height: 200,
@@ -168,7 +121,7 @@ class _DashboardViewState extends State<DashboardView> {
                 image: AssetImage(
                   ads[index],
                 ),
-                fit: BoxFit.fitHeight,
+                fit: BoxFit.fitWidth,
               ),
             ),
           );
@@ -197,9 +150,7 @@ class _DashboardViewState extends State<DashboardView> {
     );
   }
 
-  _buildCards() {
-    double width = MediaQuery.of(context).size.width * .8;
-
+  _atoptionCard() {
     return CarouselSlider(
       options: CarouselOptions(
         enlargeCenterPage: true,
@@ -210,7 +161,7 @@ class _DashboardViewState extends State<DashboardView> {
         pets.length,
         (index) => PetItem(
           data: pets[index],
-          width: width,
+          width: MediaQuery.of(context).size.width * .8,
           onTap: null,
           onFavoriteTap: () {
             setState(() {
@@ -231,27 +182,24 @@ class _DashboardViewState extends State<DashboardView> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(4.0),
-              child: WalkGroupCard(
+              child: GroomingCardWidget(
                 imgScr: "assets/images/card_dog_1.png",
                 fromDistance: "3.6",
                 title: "Heads Up For Tails",
                 location: "Valencia, Spain",
                 average: "800",
-                orgBy: "Laura",
               ),
             ),
             Padding(
               padding: EdgeInsets.all(4.0),
-              child: WalkGroupCard(
+              child: GroomingCardWidget(
                 imgScr: "assets/images/card_dog_2.png",
                 title: "PET-101",
                 fromDistance: "7.1",
                 location: "Valencia, Spain",
                 average: "900",
-                orgBy: "Laura",
               ),
             ),
-            // WalkGroupCard()
           ],
         ),
       ),

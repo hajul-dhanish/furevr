@@ -23,12 +23,10 @@ class SearchCardDog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: <Widget>[
-          Flexible(
-              child: SizedBox(
+    return Row(
+      children: <Widget>[
+        Flexible(
+          child: SizedBox(
             width: double.infinity,
             height: 140,
             child: Stack(
@@ -66,53 +64,51 @@ class SearchCardDog extends StatelessWidget {
                 )
               ],
             ),
-          )),
-          const SizedBox(
-            width: 25,
           ),
-          Flexible(
-            child: SizedBox(
-              width: double.infinity,
-              height: 140,
-              child: Stack(
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: double.infinity,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: itemTwoBgColor,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 12),
-                          child: Text(
-                            itemTwoTitle,
-                            style: TextStyle(
-                                fontSize: 13,
-                                height: 1.5,
-                                color: itemTwoTextColor),
-                          ),
+        ),
+        const SizedBox(width: 25),
+        Flexible(
+          child: SizedBox(
+            width: double.infinity,
+            height: 140,
+            child: Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    width: double.infinity,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        color: itemTwoBgColor,
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: Text(
+                          itemTwoTitle,
+                          style: TextStyle(
+                              fontSize: 13,
+                              height: 1.5,
+                              color: itemTwoTextColor),
                         ),
                       ),
                     ),
                   ),
-                  Positioned(
-                    right: -20,
-                    top: -10,
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Image.asset(itemTwoImg),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Positioned(
+                  right: -20,
+                  top: -10,
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Image.asset(itemTwoImg),
+                  ),
+                )
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
