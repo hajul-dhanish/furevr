@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:furevr/data/local/SharedPref.dart';
+import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/routes/nav.dart';
-import 'package:furevr/view/auth/login_view.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math';
 
 class Utils {
   bool isKeyboardVisible(context) {
@@ -16,5 +17,20 @@ class Utils {
     if (context.mounted) {
       context.go(Navigation.splashView);
     }
+  }
+
+  Future<void> loginInit(BuildContext context, String username) async {
+    AppState.isLoggedin = true;
+    AppState.userName = username;
+    await UserSharedPreferences().setUserNamepref(username: username);
+    if (context.mounted) {
+      context.pushReplacement(Navigation.homeView);
+    }
+  }
+
+  String generateRandom6DigitNumber() {
+    final random = Random();
+    int randomNumber = 100000 + random.nextInt(900000);
+    return randomNumber.toString();
   }
 }

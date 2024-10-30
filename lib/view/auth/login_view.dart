@@ -3,6 +3,7 @@ import 'package:furevr/component/custom_button_widget.dart';
 import 'package:furevr/component/title_text.dart';
 import 'package:furevr/data/local/SharedPref.dart';
 import 'package:furevr/data/local/app_state.dart';
+import 'package:furevr/firebase/auth_service.dart';
 import 'package:furevr/localization/app_string.dart';
 import 'package:furevr/routes/nav.dart';
 import 'package:furevr/theme/app_theme.dart';
@@ -58,12 +59,15 @@ class _LoginViewState extends State<LoginView> {
                 if (_formKey.currentState?.validate() ?? false) {
                   String userName =
                       usernameController.text.trim().toLowerCase();
-                  AppState().isLoggedin = true;
-                  AppState().userName = userName;
-                  await UserSharedPreferences()
-                      .setUserNamepref(username: userName);
-                  if (context.mounted) {
-                    context.pushReplacement(Navigation.homeView);
+
+                  final message = await AuthService().login(
+                    email: userName,
+                    password: passController.text,
+                  );
+                  if (message == "200") {
+                    if (context.mounted) {
+                      await Utils().loginInit(context, userName);
+                    }
                   }
                 }
               },
@@ -101,7 +105,7 @@ class _LoginViewState extends State<LoginView> {
             ],
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 55, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: SignInButtons(),
           ),
         ],

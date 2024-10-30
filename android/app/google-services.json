@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "294379047311",
+    "project_id": "tifl-tailes",
+    "storage_bucket": "tifl-tailes.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294379047311:android:0d8c865f4c7e31db31e3fa",
+        "android_client_info": {
+          "package_name": "com.example.furevr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDllvvlrMc7kIcC-7ZyXlq5uGA8blv8GGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
