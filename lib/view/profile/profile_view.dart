@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:furevr/data/local/app_state.dart';
-import 'package:furevr/theme/color_palette.dart';
 import 'package:furevr/utils/utils.dart';
 
 class ProfileView extends StatefulWidget {

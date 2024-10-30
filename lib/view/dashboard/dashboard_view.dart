@@ -3,8 +3,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:furevr/component/category_items.dart';
 import 'package:furevr/component/pet_item.dart';
 import 'package:furevr/component/title_text.dart';
-import 'package:furevr/data/local/SharedPref.dart';
-import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/data/remote/demo_db.dart';
 import 'package:furevr/routes/nav.dart';
 import 'package:furevr/theme/app_theme.dart';

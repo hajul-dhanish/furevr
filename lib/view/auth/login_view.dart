@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:furevr/component/custom_button_widget.dart';
 import 'package:furevr/component/title_text.dart';
-import 'package:furevr/data/local/SharedPref.dart';
-import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/firebase/auth_service.dart';
 import 'package:furevr/localization/app_string.dart';
-import 'package:furevr/routes/nav.dart';
 import 'package:furevr/theme/app_theme.dart';
 import 'package:furevr/utils/utils.dart';
-import 'package:furevr/view/home/home_view.dart';
 import 'package:furevr/widget/signin_with_google.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

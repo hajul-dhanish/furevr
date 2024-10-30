@@ -158,8 +158,6 @@ ThemeData appTheme() {
       onSecondary: ColorPalette.white,
       error: ColorPalette.errorColor,
       onError: ColorPalette.white,
-      background: ColorPalette.appBgColor,
-      onBackground: ColorPalette.textColor,
       surface: ColorPalette.cardColor,
       onSurface: ColorPalette.textColor,
     ),

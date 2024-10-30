@@ -72,13 +72,13 @@ class CustomImage extends StatelessWidget {
 }
 
 class BlankImageWidget extends StatefulWidget {
-  const BlankImageWidget({Key? key}) : super(key: key);
+  const BlankImageWidget({super.key});
 
   @override
-  _BlankImageWidgetState createState() => _BlankImageWidgetState();
+  BlankImageWidgetState createState() => BlankImageWidgetState();
 }
 
-class _BlankImageWidgetState extends State<BlankImageWidget> {
+class BlankImageWidgetState extends State<BlankImageWidget> {
   @override
   Widget build(BuildContext context) {
     return const Card(
