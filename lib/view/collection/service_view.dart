@@ -2,38 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:furevr/component/title_text.dart';
 import 'package:furevr/view/services/search_ko.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+class CollectionView extends StatelessWidget {
+  const CollectionView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
             Align(
                 alignment: Alignment.center,
                 child: titleText(
-                  "Find anything you need for your pets",
+                  "Catch anything you need for your tifl",
                 )),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
-            const SearchCardDog(
-              itemOneTitle: "Vet \nClinics",
-              itemOneImg: "assets/images/card_1.png",
-              itemOneBgColor: card1,
-              itemOneTextColor: textWhite,
-              itemTwoTitle: "Places \nto eat",
-              itemTwoImg: "assets/images/card_2.png",
-              itemTwoBgColor: card2,
-              itemTwoTextColor: textBlack,
+            GestureDetector(
+              onTap: () {},
+              child: const SearchCardDog(
+                itemOneTitle: "Vet \nClinics",
+                itemOneImg: "assets/images/card_1.png",
+                itemOneBgColor: card1,
+                itemOneTextColor: textWhite,
+                itemTwoTitle: "Places \nto eat",
+                itemTwoImg: "assets/images/card_2.png",
+                itemTwoBgColor: card2,
+                itemTwoTextColor: textBlack,
+              ),
             ),
             const SearchCardDog(
               itemOneTitle: "Places \nto walk",

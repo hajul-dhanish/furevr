@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:furevr/component/custom_button_widget.dart';
 import 'package:furevr/component/title_text.dart';
+import 'package:furevr/data/local/SharedPref.dart';
+import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/localization/app_string.dart';
 import 'package:furevr/routes/nav.dart';
-import 'package:furevr/theme/color_palette.dart';
-import 'package:furevr/theme/theme_provider.dart';
-import 'package:furevr/view/dashboard/home_view.dart';
-import 'package:provider/provider.dart';
+import 'package:furevr/theme/app_theme.dart';
+import 'package:furevr/utils/utils.dart';
+import 'package:furevr/view/home/home_view.dart';
+import 'package:furevr/widget/signin_with_google.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginView extends StatefulWidget {
-  static String view = Navigation().loginView;
   const LoginView({super.key});
 
   @override
@@ -19,7 +21,10 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  bool isPassFieldVisible = false;
+
+  final _formKey = GlobalKey<FormState>();
+
+  bool isPassFieldObscured = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,34 +33,41 @@ class _LoginViewState extends State<LoginView> {
         mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 10),
-          titleText(
-            AppStrings.loginViewTitleText,
-          ),
+          titleText(AppStrings.loginViewTitleText),
           Text(
             AppStrings.loginViewWelcomeText,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-          Image.asset(
-            "assets/png/dog.png",
-            height: MediaQuery.of(context).size.height * 0.35,
+          const SizedBox(height: 10),
+          Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                usernameTextField(),
+                passwordTextField(),
+              ],
+            ),
           ),
           const SizedBox(height: 10),
-          usernameTextField(),
-          passwordTextField(),
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: AppButton(
               text: AppStrings.loginViewLoginButtonText,
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeView(),
-                  ),
-                );
+              onPressed: () async {
+                if (_formKey.currentState?.validate() ?? false) {
+                  String userName =
+                      usernameController.text.trim().toLowerCase();
+                  AppState().isLoggedin = true;
+                  AppState().userName = userName;
+                  await UserSharedPreferences()
+                      .setUserNamepref(username: userName);
+                  if (context.mounted) {
+                    context.pushReplacement(Navigation.homeView);
+                  }
+                }
               },
-              options: appButtonOption(context, buttonColor: null),
+              options: appButtonOption(context),
             ),
           ),
           Padding(
@@ -82,14 +94,32 @@ class _LoginViewState extends State<LoginView> {
               ],
             ),
           ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("------ or ------"),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 55, vertical: 20),
+            child: SignInButtons(),
+          ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () =>
-      //       Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
-      //   child: const Icon(Icons.brightness_6),
-      // ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Text(
+          "@${Utils.getCurrentYear} | Powered by tifltailes.com",
+          textAlign: TextAlign.center,
+          style: CustomTextStyles.captionNormal,
+        ),
+      ),
     );
+  }
+
+  clearTextFields() {
+    usernameController.clear();
+    passController.clear();
   }
 
   Widget usernameTextField() {
@@ -112,6 +142,12 @@ class _LoginViewState extends State<LoginView> {
           filled: true,
           contentPadding: const EdgeInsets.all(16),
         ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return "This field is empty, kind of like your energy on Monday mornings";
+          }
+          return null;
+        },
       ),
     );
   }
@@ -122,16 +158,16 @@ class _LoginViewState extends State<LoginView> {
       child: TextFormField(
         controller: passController,
         style: const TextStyle(fontSize: 14),
-        obscureText: isPassFieldVisible,
+        obscureText: isPassFieldObscured,
         decoration: InputDecoration(
           hintText: AppStrings.loginViewLoginPasswordFieldTitleText,
           isDense: true,
           suffixIcon: IconButton(
               onPressed: () {
-                isPassFieldVisible = !isPassFieldVisible;
+                isPassFieldObscured = !isPassFieldObscured;
                 setState(() {});
               },
-              icon: isPassFieldVisible
+              icon: isPassFieldObscured
                   ? const Icon(Icons.visibility)
                   : const Icon(Icons.visibility_off)),
           hintStyle: const TextStyle(fontSize: 16),
@@ -145,6 +181,12 @@ class _LoginViewState extends State<LoginView> {
           filled: true,
           contentPadding: const EdgeInsets.all(16),
         ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return "Did you forget something, or is this your usual level of commitment?";
+          }
+          return null;
+        },
       ),
     );
   }

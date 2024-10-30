@@ -1,3 +1,4 @@
+import 'package:furevr/data/local/app_state.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserSharedPreferences {
@@ -28,6 +29,7 @@ class UserSharedPreferences {
   Future<void> resetSharedPreferencess() async {
     try {
       await initSharedPreferences();
+      AppState().clearAppState();
       _prefs?.clear();
     } catch (e) {
       rethrow;

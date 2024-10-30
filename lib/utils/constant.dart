@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+class AppConstant {
+static const String appName = "Tifl Tails"; 
+  
+}
 
 const appBackground = Color(0xFFEFF5F4);
 const primary = Color(0xFF00B7B7);
