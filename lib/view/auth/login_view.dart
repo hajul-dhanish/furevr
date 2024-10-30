@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furevr/component/custom_button_widget.dart';
 import 'package:furevr/component/title_text.dart';
+import 'package:furevr/localization/app_string.dart';
 import 'package:furevr/routes/nav.dart';
 import 'package:furevr/theme/color_palette.dart';
 import 'package:furevr/theme/theme_provider.dart';
@@ -28,10 +29,10 @@ class _LoginViewState extends State<LoginView> {
         children: [
           const SizedBox(height: 10),
           titleText(
-            "Hey you, zoophilist!",
+            AppStrings.loginViewTitleText,
           ),
           Text(
-            "Welcome to the world of pets",
+            AppStrings.loginViewWelcomeText,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           Image.asset(
@@ -45,7 +46,7 @@ class _LoginViewState extends State<LoginView> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: AppButton(
-              text: "Login",
+              text: AppStrings.loginViewLoginButtonText,
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
@@ -64,17 +65,17 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 InkWell(
                   onTap: () {},
-                  child: const SizedBox(
+                  child: SizedBox(
                     child: Text(
-                      "New User? Sign in",
+                      AppStrings.loginViewLoginSignUpButtonText,
                     ),
                   ),
                 ),
                 InkWell(
                   onTap: () {},
-                  child: const SizedBox(
+                  child: SizedBox(
                     child: Text(
-                      "Forgot Password",
+                      AppStrings.loginViewLoginForgotPassText,
                     ),
                   ),
                 ),
@@ -98,7 +99,7 @@ class _LoginViewState extends State<LoginView> {
         controller: usernameController,
         style: const TextStyle(fontSize: 14),
         decoration: InputDecoration(
-          hintText: 'Username',
+          hintText: AppStrings.loginViewLoginUsernameFieldTitleText,
           isDense: true,
           hintStyle: const TextStyle(fontSize: 16),
           border: OutlineInputBorder(
@@ -123,7 +124,7 @@ class _LoginViewState extends State<LoginView> {
         style: const TextStyle(fontSize: 14),
         obscureText: isPassFieldVisible,
         decoration: InputDecoration(
-          hintText: 'Password',
+          hintText: AppStrings.loginViewLoginPasswordFieldTitleText,
           isDense: true,
           suffixIcon: IconButton(
               onPressed: () {
