@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furevr/data/local/SharedPref.dart';
+import 'package:furevr/data/local/shared_pref.dart';
 import 'package:furevr/view/dashboard/dashboard_view.dart';
 import 'package:furevr/view/collection/service_view.dart';
 import 'package:furevr/view/profile/profile_view.dart';

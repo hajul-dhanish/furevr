@@ -1,4 +1,4 @@
-import '../../Env/base_config.dart';
+import '../../env/base_config.dart';
 
 var application = Environment().config!;
 

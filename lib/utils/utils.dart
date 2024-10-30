@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furevr/data/local/SharedPref.dart';
+import 'package:furevr/data/local/shared_pref.dart';
 import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/routes/nav.dart';
 import 'package:go_router/go_router.dart';

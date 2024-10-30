@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:furevr/component/category_items.dart';
 import 'package:furevr/component/pet_item.dart';
 import 'package:furevr/component/title_text.dart';
 import 'package:furevr/data/remote/demo_db.dart';
@@ -76,8 +75,6 @@ class _DashboardViewState extends State<DashboardView> {
     );
   }
 
-  int _selectedCategory = 0;
-
   _buildSearch() => Container(
         margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(14)),
@@ -134,25 +131,25 @@ class _DashboardViewState extends State<DashboardView> {
     );
   }
 
-  _buildCategories() {
-    List<Widget> lists = List.generate(
-      categories.length,
-      (index) => CategoryItem(
-        data: categories[index],
-        selected: index == _selectedCategory,
-        onTap: () {
-          setState(() {
-            _selectedCategory = index;
-          });
-        },
-      ),
-    );
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.only(bottom: 5, left: 15),
-      child: Row(children: lists),
-    );
-  }
+  // _buildCategories() {
+  //   List<Widget> lists = List.generate(
+  //     categories.length,
+  //     (index) => CategoryItem(
+  //       data: categories[index],
+  //       selected: index == _selectedCategory,
+  //       onTap: () {
+  //         setState(() {
+  //           _selectedCategory = index;
+  //         });
+  //       },
+  //     ),
+  //   );
+  //   return SingleChildScrollView(
+  //     scrollDirection: Axis.horizontal,
+  //     padding: const EdgeInsets.only(bottom: 5, left: 15),
+  //     child: Row(children: lists),
+  //   );
+  // }
 
   _atoptionCard() {
     return CarouselSlider(
