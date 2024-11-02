@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:furevr/theme/app_theme.dart';
 import 'package:furevr/theme/color_palette.dart';
 import 'package:furevr/utils/constant.dart';
+import 'package:furevr/utils/utils.dart';
+import 'package:furevr/widget/custom_network_image.dart';
 
 class GroomingCardWidget extends StatelessWidget {
-  final String imgScr;
-  final String title;
+  final String? imgScr;
+  final String? title;
   final String location;
   final String fromDistance;
   final String average;
@@ -34,7 +36,7 @@ class GroomingCardWidget extends StatelessWidget {
             children: <Widget>[
               Stack(
                 children: [
-                  Image.asset(imgScr),
+                  CustomNetworkImage(imgUrl: imgScr),
                   Positioned(
                     right: 8,
                     top: 8,
@@ -56,7 +58,7 @@ class GroomingCardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          title,
+                          title ?? "",
                           style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

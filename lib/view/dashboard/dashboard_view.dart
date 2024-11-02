@@ -26,13 +26,14 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(toolbarHeight: 0.0),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 0, bottom: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DashboardWidgetComponents.dashboardTopTileWidget(""),
+              DashboardWidgetComponents.dashboardTopTileWidget("Shadow"),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -55,12 +56,27 @@ class _DashboardViewState extends State<DashboardView> {
               _groomingCards(),
               const SizedBox(height: 15),
               titleText(
-                "Find the Perfect Outdoor for Your Tifl",
+                "We got some perfect stay for your tifl",
                 showViewAll: true,
+                callback: () => context.push(Navigation.groomingView),
               ),
               const SizedBox(height: 15),
-              const DropletCorossolCardWidget(),
+              _groomingCards(),
               const SizedBox(height: 15),
+              titleText(
+                "Train your tifl so it won't end up like you",
+                showViewAll: true,
+                callback: () => context.push(Navigation.groomingView),
+              ),
+              _groomingCards(),
+              const SizedBox(height: 15),
+              // titleText(
+              //   "Find the Perfect Outdoor for Your Tifl",
+              //   showViewAll: true,
+              // ),
+              // const SizedBox(height: 15),
+              // const DropletCorossolCardWidget(),
+              // const SizedBox(height: 15),
               titleText(
                 "Adopt New Tifls",
                 showViewAll: true,

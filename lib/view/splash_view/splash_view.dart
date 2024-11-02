@@ -18,10 +18,12 @@ class _SplashViewState extends State<SplashView> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 950));
       if (mounted) {
+        // context.go(Navigation.testView);
+        // context.go(Navigation.mobileAuthView);
         if (AppState.isLoggedin) {
           context.go(Navigation.homeView);
         } else {
-          context.go(Navigation.loginView);
+          context.go(Navigation.mobileAuthView);
         }
       }
     });
@@ -56,13 +58,11 @@ class _SplashViewState extends State<SplashView> {
                         size: 50.0,
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(top: 10.0)),
+                    Padding(padding: EdgeInsets.only(top: 30.0)),
                     Text(
-                      "TiflTails.com",
+                      "TiflTails",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24.0,
-                          color: Colors.black),
+                          fontWeight: FontWeight.bold, fontSize: 24.0),
                     )
                   ],
                 ),

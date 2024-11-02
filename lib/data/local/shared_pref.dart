@@ -13,10 +13,28 @@ class UserSharedPreferences {
     _prefs?.setString("userName", username);
   }
 
+  Future<void> setUserIdPref({required String userId}) async {
+    await initSharedPreferences();
+    _prefs?.setString("userId", userId);
+  }
+
   Future<String> getUserNamePref() async {
     try {
       await initSharedPreferences();
       String? data = _prefs?.getString("userName");
+      if (data == null) {
+        return "";
+      }
+      return data;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String> getUserIdPref() async {
+    try {
+      await initSharedPreferences();
+      String? data = _prefs?.getString("userId");
       if (data == null) {
         return "";
       }

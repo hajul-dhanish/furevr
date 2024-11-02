@@ -6,12 +6,12 @@ AppButtonOptions appButtonOption(context, {Color? buttonColor}) =>
       width: double.infinity,
       height: 50,
       color: buttonColor,
-      textStyle: Theme.of(context).textTheme.bodyMedium,
+      // textStyle: Theme.of(context).textTheme.bodyMedium,
       borderSide: const BorderSide(
         color: Colors.transparent,
         width: 1,
       ),
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: BorderRadius.circular(10),
     );
 
 class AppButtonOptions {
