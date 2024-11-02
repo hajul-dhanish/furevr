@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ColorPalette {
   // Primary and Secondary Colors
-  static const primary = Color(0xFF37474F); // Deep Blue-Grey
-  static const secondary =
-      Color(0xFFFF7043); // Orange for action-oriented elements
+  static const primary = Color.fromARGB(255, 119, 30, 135);
+  static const secondary = Color(0xFF37474F); // Deep Blue-Grey
+  // Color(0xFFFF7043); // Orange for action-oriented elements
 
   // Background and Surface Colors
   static const background = Color(0xFFF5F5F5);
@@ -53,7 +53,8 @@ class ColorPalette {
   static const inActiveColor = Colors.grey;
 
   static const yellow = Color(0xFFffcb66);
-  static const white = Color.fromARGB(255, 255, 255, 255);
+  static const white = Colors.white;
+  static const black = Colors.black;
   static const green = Color(0xFFa2e1a6);
   static const pink = Color(0xFFf5bde8);
   static const purple = Color(0xFFcdacf9);
@@ -70,7 +71,7 @@ class ColorPalette {
   static const Color lightTextColor = Color(0xFF000000);
   static const Color darkTextColor = Color(0xFFFFFFFF);
   // Other Colors
-  static const Color infoColor = Color(0xFF2196F3);
+  static const Color infoColor = Color(0xFF000000);
 
   static const listColors = [
     green,

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:furevr/data/remote/AppException.dart';
-import 'package:furevr/data/remote/network/BaseApiService.dart';
+import 'package:furevr/data/remote/app_exception.dart';
+import 'package:furevr/data/remote/network/base_api_service.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkApiService extends BaseApiService {

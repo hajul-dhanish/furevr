@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:furevr/component/category_items.dart';
 import 'package:furevr/component/pet_item.dart';
 import 'package:furevr/component/title_text.dart';
-import 'package:furevr/data/local/SharedPref.dart';
-import 'package:furevr/data/local/app_state.dart';
 import 'package:furevr/data/remote/demo_db.dart';
 import 'package:furevr/routes/nav.dart';
 import 'package:furevr/theme/app_theme.dart';
@@ -29,13 +26,14 @@ class _DashboardViewState extends State<DashboardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(toolbarHeight: 0.0),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 0, bottom: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DashboardWidgetComponents.dashboardTopTileWidget(""),
+              DashboardWidgetComponents.dashboardTopTileWidget("Shadow"),
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -58,12 +56,27 @@ class _DashboardViewState extends State<DashboardView> {
               _groomingCards(),
               const SizedBox(height: 15),
               titleText(
-                "Find the Perfect Outdoor for Your Tifl",
+                "We got some perfect stay for your tifl",
                 showViewAll: true,
+                callback: () => context.push(Navigation.groomingView),
               ),
               const SizedBox(height: 15),
-              const DropletCorossolCardWidget(),
+              _groomingCards(),
               const SizedBox(height: 15),
+              titleText(
+                "Train your tifl so it won't end up like you",
+                showViewAll: true,
+                callback: () => context.push(Navigation.groomingView),
+              ),
+              _groomingCards(),
+              const SizedBox(height: 15),
+              // titleText(
+              //   "Find the Perfect Outdoor for Your Tifl",
+              //   showViewAll: true,
+              // ),
+              // const SizedBox(height: 15),
+              // const DropletCorossolCardWidget(),
+              // const SizedBox(height: 15),
               titleText(
                 "Adopt New Tifls",
                 showViewAll: true,
@@ -77,8 +90,6 @@ class _DashboardViewState extends State<DashboardView> {
       ),
     );
   }
-
-  int _selectedCategory = 0;
 
   _buildSearch() => Container(
         margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -136,25 +147,25 @@ class _DashboardViewState extends State<DashboardView> {
     );
   }
 
-  _buildCategories() {
-    List<Widget> lists = List.generate(
-      categories.length,
-      (index) => CategoryItem(
-        data: categories[index],
-        selected: index == _selectedCategory,
-        onTap: () {
-          setState(() {
-            _selectedCategory = index;
-          });
-        },
-      ),
-    );
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.only(bottom: 5, left: 15),
-      child: Row(children: lists),
-    );
-  }
+  // _buildCategories() {
+  //   List<Widget> lists = List.generate(
+  //     categories.length,
+  //     (index) => CategoryItem(
+  //       data: categories[index],
+  //       selected: index == _selectedCategory,
+  //       onTap: () {
+  //         setState(() {
+  //           _selectedCategory = index;
+  //         });
+  //       },
+  //     ),
+  //   );
+  //   return SingleChildScrollView(
+  //     scrollDirection: Axis.horizontal,
+  //     padding: const EdgeInsets.only(bottom: 5, left: 15),
+  //     child: Row(children: lists),
+  //   );
+  // }
 
   _atoptionCard() {
     return CarouselSlider(

@@ -1,5 +1,6 @@
 import 'package:furevr/routes/nav.dart';
-import 'package:furevr/view/auth/login_view.dart';
+import 'package:furevr/test.dart';
+import 'package:furevr/view/auth/phone_auth_view.dart';
 import 'package:furevr/view/collection/service_view.dart';
 import 'package:furevr/view/dashboard/dashboard_view.dart';
 import 'package:furevr/view/grooming/grooming_view.dart';
@@ -14,9 +15,9 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   routes: [
     GoRoute(
-      path: Navigation.loginView,
-      name: getNavigatorName(Navigation.loginView),
-      builder: (context, state) => const LoginView(),
+      path: Navigation.testView,
+      name: getNavigatorName(Navigation.testView),
+      builder: (context, state) => const TextTT(),
     ),
     GoRoute(
       path: Navigation.dashboardView,
@@ -42,6 +43,11 @@ final GoRouter router = GoRouter(
       path: Navigation.profileView,
       name: getNavigatorName(Navigation.profileView),
       builder: (context, state) => const ProfileView(),
+    ),
+    GoRoute(
+      path: Navigation.mobileAuthView,
+      name: getNavigatorName(Navigation.mobileAuthView),
+      builder: (context, state) => const PhoneAuthView(),
     ),
   ],
 );

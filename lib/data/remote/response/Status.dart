@@ -1,3 +1,3 @@
-enum Status { LOADING, COMPLETED, ERROR, OFFLINE }
+enum Status { loading, completed, error, offline }
 
 const int unAuth = 401;

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:furevr/firebase/cloud_firestore.dart';
 import 'package:furevr/firebase_options.dart';
 import 'package:furevr/localization/app_localization.dart';
 import 'package:furevr/routes/router.dart';

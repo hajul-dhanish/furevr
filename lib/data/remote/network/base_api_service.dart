@@ -1,4 +1,4 @@
-import '../../Env/base_config.dart';
+import '../../env/base_config.dart';
 
 abstract class BaseApiService {
   final String baseUrl = Environment().config!.apiHost;

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:furevr/theme/color_palette.dart';
 
 class NotifyBox extends StatelessWidget {
   const NotifyBox({
-    Key? key,
+    super.key,
     required this.number,
     this.boxSize = 30,
     this.color = Colors.red,
-  }) : super(key: key);
+  });
 
   final int number;
   final double boxSize;
@@ -24,7 +25,12 @@ class NotifyBox extends StatelessWidget {
           shape: BoxShape.circle,
           color: color,
         ),
-        child: Text("$number", style: TextStyle(color: Colors.white)),
+        child: Text(
+          "$number",
+          style: const TextStyle(
+            color: ColorPalette.white,
+          ),
+        ),
       ),
     );
   }
